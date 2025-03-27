@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const FoodCategory = new mongoose.Schema({
-    _id : mongoose.Schema.Types.ObjectId,
+const FoodCategorySchema = new mongoose.Schema({
     categoryName : String,
     createdAt : Date,
     updatedAt : Date
 })
+export const foodCategory = mongoose.model("FoodCategory", FoodCategorySchema)

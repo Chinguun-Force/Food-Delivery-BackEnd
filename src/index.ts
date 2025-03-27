@@ -1,27 +1,30 @@
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { Food } from './schema/Food';
+import { foodCategory } from './schema/FoodCategory';
+import { User } from './schema/User';
 const port = 3001;
 const app = express();
-
+app.use(express.json())
 app.post('/food' ,async(req:Request, res:Response) =>{
   const food = await Food.create(req.body)
-  // const food = Food.create({
-  //   foodName: "Pizza",
-  //   price: 1000,
-  //   image: "https://www.google.com",
-  //   ingredients: "Cheese, Tomato, Flour",
-  //   category: "5f5e0f9d0b0b1d2c5c5c5c5c"
-  // })
+  console.log(req.body)
   res.json({success: true, food})
-  // Food.create(req.body)
-  // res.json({success: true})
 })
 app.get ('/food', async(req:Request, res:Response) => {
   const foods = await Food.find()
 
   res.json({success: true, foods})
 })
+app.post ('/foodCategory', async(req , res ) =>{
+  const FoodCategory = await foodCategory.create(req.body)
+  res.json({success: true, FoodCategory})
+})
+app.post('/user' , async(req:Request, res:Response) =>{
+  const userMock = await User.create(req.body)
+  res.json({success: true, userMock})
+}
+)
 app.listen(port, async() => {
   const connectDb = async () => {
     try{

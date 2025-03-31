@@ -25,6 +25,16 @@ app.post('/user' , async(req:Request, res:Response) =>{
   res.json({success: true, userMock})
 }
 )
+app.delete('/food/:id', async(req:Request, res:Response) =>{
+  const food = await Food.findByIdAndDelete(req.params.id)
+  res.json({success: true, food})
+}
+)
+app.put('/food/:id', async(req:Request, res:Response) =>{
+  const food = await Food.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  res.json({success: true, food})
+}
+)
 app.listen(port, async() => {
   const connectDb = async () => {
     try{

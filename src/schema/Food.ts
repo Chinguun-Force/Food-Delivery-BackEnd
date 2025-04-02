@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 
 const foodSchema = new mongoose.Schema({
-    foodName : String,
+    Name : String,
     price : Number,
     image : String,
     ingredients : String,
-    category : String,
-    createdAt : Date,
-    updatedAt : Date
-})
+    category : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "FoodCategory"
+    },
+} , {timestamps : true })
 export const Food = mongoose.model("Food", foodSchema)

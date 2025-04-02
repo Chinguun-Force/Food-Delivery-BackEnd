@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-const UserRoleEnum = {
+const UserRoleEnumSchema = {
     ADMIN: "ADMIN",
     CUSTOMER : "CUSTOMER"
 }
-export default UserRoleEnum;
+// export const UserRoleEnum = mongoose.model("Role", UserRoleEnumSchema)

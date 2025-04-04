@@ -1,0 +1,1 @@
+{"version":3,"file":"FoodOrder.js","sourceRoot":"","sources":["../../src/schema/FoodOrder.ts"],"names":[],"mappings":";;;;;AAAA,wDAAgC;AAGhC,MAAM,SAAS,GAAG,IAAI,kBAAQ,CAAC,MAAM,CAAC;IAClC,IAAI,EAAE,MAAM;IACZ,cAAc,EAAE,MAAM;IACtB,MAAM,EAAE,MAAM;IACd,SAAS,EAAE,IAAI;IACf,SAAS,EAAE,IAAI;CAClB,CAAC,CAAA"}

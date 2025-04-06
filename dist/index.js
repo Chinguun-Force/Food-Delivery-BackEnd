@@ -13,22 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const FoodCategory_1 = require("./schema/FoodCategory");
-const User_1 = require("./schema/User");
 const food_1 = require("./routes/food");
 const connection_1 = require("./utils/connection");
+const category_1 = require("./routes/category");
 const port = 8000;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.post('/foodCategory', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const FoodCategory = yield FoodCategory_1.foodCategory.create(req.body);
-    res.json({ success: true, FoodCategory });
-}));
-app.post('/user', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const userMock = yield User_1.User.create(req.body);
-    res.json({ success: true, userMock });
-}));
 app.use('/api/v1/food', food_1.foodRouter);
+app.use('/api/v1/categories', category_1.categoryRouter);
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     const connectDb = () => __awaiter(void 0, void 0, void 0, function* () {
         try {

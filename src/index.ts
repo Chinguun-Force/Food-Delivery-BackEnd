@@ -1,22 +1,15 @@
 import express, { Request, Response } from 'express';
-import { foodCategory } from './schema/FoodCategory';
-import { User } from './schema/User';
+import dotenv from 'dotenv';
 import { foodRouter } from './routes/food';
 import { connection } from './utils/connection';
+import { categoryRouter } from './routes/category';
+dotenv.config()
 const port = 8000;
 const app = express();
 app.use(express.json())
 
-app.post ('/foodCategory', async(req , res ) =>{
-  const FoodCategory = await foodCategory.create(req.body)
-  res.json({success: true, FoodCategory})
-})
-app.post('/user' , async(req:Request, res:Response) =>{
-  const userMock = await User.create(req.body)
-  res.json({success: true, userMock})
-}
-)
 app.use('/api/v1/food', foodRouter);
+app.use('/api/v1/categories', categoryRouter);
 
 
 app.listen(port, async() => {

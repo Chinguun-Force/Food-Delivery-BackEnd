@@ -10,7 +10,7 @@ app.use(express.json())
 
 app.use('/api/v1/food', foodRouter);
 app.use('/api/v1/categories', categoryRouter);
-
+app.use('/')
 
 app.listen(port, async() => {
   const connectDb = async () => {

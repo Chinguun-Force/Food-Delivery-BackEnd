@@ -23,6 +23,7 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use('/api/v1/food', food_1.foodRouter);
 app.use('/api/v1/categories', category_1.categoryRouter);
+app.use('/');
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     const connectDb = () => __awaiter(void 0, void 0, void 0, function* () {
         try {

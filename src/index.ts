@@ -1,12 +1,19 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { foodRouter } from './routes/food';
 import { connection } from './utils/connection';
 import { categoryRouter } from './routes/category';
+
 dotenv.config()
+
 const port = 8000;
+
 const app = express();
+
 app.use(express.json())
+
+app.use(cors());
 
 app.use('/api/v1/food', foodRouter);
 app.use('/api/v1/categories', categoryRouter);

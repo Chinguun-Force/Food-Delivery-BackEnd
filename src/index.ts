@@ -4,6 +4,7 @@ import cors from 'cors';
 import { foodRouter } from './routes/food';
 import { connection } from './utils/connection';
 import { categoryRouter } from './routes/category';
+import { authRouter } from './routes/auth';
 
 dotenv.config()
 
@@ -15,8 +16,9 @@ app.use(express.json())
 
 app.use(cors());
 
-app.use('/api/v1/food', foodRouter);
+app.use('/api/v1/foods', foodRouter);
 app.use('/api/v1/categories', categoryRouter);
+app.use('/api/v1/auth', authRouter)
 
 app.get('/', (req, res) => {
   res.send('ok')

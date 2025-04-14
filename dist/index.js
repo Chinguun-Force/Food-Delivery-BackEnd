@@ -18,13 +18,15 @@ const cors_1 = __importDefault(require("cors"));
 const food_1 = require("./routes/food");
 const connection_1 = require("./utils/connection");
 const category_1 = require("./routes/category");
+const auth_1 = require("./routes/auth");
 dotenv_1.default.config();
 const port = 8000;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
-app.use('/api/v1/food', food_1.foodRouter);
+app.use('/api/v1/foods', food_1.foodRouter);
 app.use('/api/v1/categories', category_1.categoryRouter);
+app.use('/api/v1/auth', auth_1.authRouter);
 app.get('/', (req, res) => {
     res.send('ok');
 });

@@ -1,6 +1,7 @@
 import { foodCategory } from "../schema/FoodCategory";
  export const createCategory = async (request, response) =>{
     try{
+        console.log(request.headers)
         const created = await foodCategory.create(request.body)
         response.status(201).json({success: true, created})
     } catch(err){

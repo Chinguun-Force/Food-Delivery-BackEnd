@@ -13,6 +13,7 @@ exports.getCategoriesWithFoods = exports.updateCategory = exports.deleteCategory
 const FoodCategory_1 = require("../schema/FoodCategory");
 const createCategory = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log(request.headers);
         const created = yield FoodCategory_1.foodCategory.create(request.body);
         response.status(201).json({ success: true, created });
     }

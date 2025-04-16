@@ -19,19 +19,30 @@ export const signUp = async (req, res) =>
     }
 }
 }
-export const login = async (res, req) => {
-    const {email, password} = req.body;
-
-    const user = await User.findOne({email: email});
-    if(!user) { 
-        res.status(404).json({success: false, message: "Username or password is incorrect"})
-        return;
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+  
+    const user = await User.findOne({ email: email });
+  
+    if (!user) {
+      res
+        .status(404)
+        .json({ success: false, error: "Username or password is wrong" });
+      return;
     }
-    const isPair = bcrypt.compareSync(password, user.password);
-    if(!isPair) {
-        res.status(404).json({success: false, message: "Хэтэрхий хурдан бичээд бид хүлээж авж чадахгүй байна"})
-        return;
+  
+    const isCompare = bcrypt.compareSync(password, user.password);
+  
+    if (!isCompare) {
+      res
+        .status(401)
+        .json({ success: false, error: "Username or password is wrong" });
+      return;
     }
-    const token = jwt.sign({ user }, process.env.ACCESS_TOKEN_SECRET_KEY, {expiresIn: "1d"});
-    res.status(200).json({success: true, message: "User logged in successfully", token})
-}
+  
+    const token = jwt.sign({ user }, process.env.ACCESS_TOKEN_SECRET_KEY, {
+      expiresIn: "1h",
+    });
+  
+    res.status(200).json({ success: true, token });
+  };

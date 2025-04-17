@@ -11,6 +11,7 @@ export const signUp = async (req, res) =>
         const salt = bcrypt.genSaltSync(saltRounds);
         const hash = bcrypt.hashSync(req.body.password, salt);
         const user = await User.create({...req.body, password: hash})
+        res.status(201).json({success:true, user})
 } catch (error) {
     console.log(error);
     if(error.code === 11000){

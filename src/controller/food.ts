@@ -1,18 +1,18 @@
 import { Food } from "../schema/Food"
-export const createFood = async (Request, Response) => {
-    const food = await Food.create(Request.body)
-    console.log(Request.body)
-    Request.json({ success: true, food })
+export const createFood = async (req, res) => {
+    const food = await Food.create(req.body)
+    console.log(req.body)
+    res.json({ success: true, food })
 }
-export const getFood = async (Request, Response) => {
+export const getFood = async (req, res) => {
     const foods = await Food.find()
-    Response.json({ success: true, foods })
+    res.json({ success: true, foods })
 }
-export const deleteFood = async (Request, Response) => {
-    const food = await Food.findByIdAndDelete(Request.params.id)
-    Response.json({ success: true, food })
+export const deleteFood = async (req, res) => {
+    const food = await Food.findByIdAndDelete(req.params.id)
+    res.json({ success: true, food })
 }
-export const updateFood = async (Request, Response) => {
-    const food = await Food.findByIdAndUpdate(Request.params.id, Request.body, { new: true })
-    Response.json({ success: true, food })
+export const updateFood = async (req, res) => {
+    const food = await Food.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.json({ success: true, food })
 }

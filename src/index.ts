@@ -33,5 +33,7 @@ app.listen(port, async() => {
     }
   }
   connectDb()
+  // const MONGODB_URI = process.env.MONGODB_URI as string;
   console.log(`Server is running on port ${port}`)
+  // console.log(process.env.MONGODB_URI)
 })
